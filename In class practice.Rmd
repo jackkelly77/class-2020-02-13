@@ -1,0 +1,22 @@
+---
+title: "In class practice"
+author: "Jack Kelly"
+date: "2/13/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r import}
+
+library(tidyverse)
+library(readxl)
+library(janitor)
+
+x <- read_excel("class_enrollment_summary_by_term_2.13.20.xlsx", skip = 3) %>% clean_names()
+
+x %>% filter(course_department == "Government") %>% arrange(desc(total)) %>% select(course_title, course_name, total)
+
+```
